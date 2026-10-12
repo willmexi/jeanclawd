@@ -1,0 +1,51 @@
+{
+  "name": "jean-clawd",
+  "version": "1.0.0",
+  "description": "A crew of AI agents that talk to each other, across every project: planner, cross-agent switchboard (CLI, MCP, HTTP, A2A), and a pixel-art office.",
+  "bin": {
+    "jean": "cli/jean.js"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node test/store.test.js",
+    "desktop": "./scripts/package-app.sh && open dist/JeanClawd.app"
+  },
+  "license": "MIT",
+  "homepage": "https://jeanclawd.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willmexi/jeanclawd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willmexi/jeanclawd/issues"
+  },
+  "author": "Will Mexi (@willmexi)",
+  "funding": "https://buymeacoffee.com/willmexi",
+  "keywords": [
+    "ai-agents",
+    "claude-code",
+    "codex",
+    "cursor",
+    "mcp",
+    "a2a",
+    "planner",
+    "multi-agent"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "cli",
+    "lib",
+    "mcp",
+    "server",
+    "web",
+    "plugins",
+    "skills",
+    "clients",
+    "docs",
+    "PROTOCOL.md",
+    "README.md",
+    "LICENSE"
+  ]
+}

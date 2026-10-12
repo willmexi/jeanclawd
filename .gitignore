@@ -1,0 +1,21 @@
+# build output
+dist/
+JeanClawd/.build/
+node_modules/
+
+# your own Jean data and markers never belong in the repo
+.jean
+*.bak-jean
+.env
+.env.*
+
+# OS / editors
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# the jeanclawd.org website lives here locally but is not part of the open-source release
+site/
+# local preview configs for Claude Code
+.claude/

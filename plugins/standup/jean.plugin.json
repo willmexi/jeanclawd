@@ -1,0 +1,6 @@
+{
+  "name": "standup",
+  "version": "1.0.0",
+  "description": "A daily standup: what every agent finished, what they're on, and what is waiting. CLI command, MCP tool and an HTTP route.",
+  "main": "index.js"
+}

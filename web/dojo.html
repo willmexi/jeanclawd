@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Dojo · Jean Clawd</title>
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dojo.css">
+</head>
+<body>
+<canvas id="room" width="1220" height="800" aria-label="The Dojo: an isometric office where the agents work"></canvas>
+
+<header class="hud-top">
+  <a class="hud-btn" href="/" title="Back to the planner">◂ Planner</a>
+  <div class="hud-title"><b>THE DOJO</b><span>Jean Clawd vd Dam</span></div>
+  <div class="chips" id="chips"></div>
+  <div class="hud-right">
+    <button class="hud-btn" id="replay" title="Replay the last messages on the floor">▶ Replay</button>
+    <button class="hud-btn on" id="labels" title="Show what each agent is doing">Labels</button>
+  </div>
+</header>
+
+
+
+<div class="dock">
+<section class="chat" id="chat">
+  <div class="chat-log" id="chatLog"></div>
+  <form class="chat-bar" id="chatForm" autocomplete="off">
+    <span class="chat-as" id="chatAs">YOU</span>
+    <input id="chatInput" maxlength="600" placeholder="Ask the crew… Jean finds the right agent  (@name = one agent)   [T]">
+    <button>Send</button>
+  </form>
+</section>
+<nav class="hotbar" id="hotbar">
+  <button data-win="quests"><kbd>Q</kbd>Quests</button>
+  <button data-win="crew"><kbd>C</kbd>Crew</button>
+  <button data-win="projects"><kbd>P</kbd>Projects</button>
+  <button data-win="depts"><kbd>D</kbd>Floors</button>
+  <button data-win="playbook"><kbd>B</kbd>Playbook</button>
+  <button data-win="radio"><kbd>R</kbd>Radio</button>
+  <button data-win="system"><kbd>S</kbd>System</button>
+</nav>
+</div>
+
+<div class="win-layer" id="winLayer" hidden><div class="win" id="win" role="dialog" aria-modal="true"></div></div>
+<div class="tip" id="tip" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="sprite.js"></script>
+<script src="dojo.js"></script>
+</body>
+</html>

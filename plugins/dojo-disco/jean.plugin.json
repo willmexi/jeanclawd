@@ -1,0 +1,6 @@
+{
+  "name": "dojo-disco",
+  "version": "1.0.0",
+  "description": "When an agent finishes a task, a disco ball drops into the Dojo. Shows the browser plugin API: onMessage, onDraw, addWindow, addHotbar.",
+  "web": { "dojo": ["dojo.js"] }
+}
