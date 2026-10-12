@@ -1,0 +1,42 @@
+# Runs on every pull request and every push to main. Required to pass before a pull request can merge.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Syntax check every JavaScript file
+        run: git ls-files '*.js' | xargs -n1 node --check
+      - name: Data-layer tests
+        run: node test/store.test.js
+      - name: Server, CLI and protocol smoke test
+        run: |
+          export JEAN_DIR="$RUNNER_TEMP/jean" JEAN_URL=http://127.0.0.1:4299 JEAN_AGENT=ci-agent
+          node server/server.js 4299 & sleep 2
+          node cli/jean.js hello --role "CI" > /dev/null
+          JEAN_AGENT=ci-other node cli/jean.js hello --role "CI 2" > /dev/null
+          node cli/jean.js send ci-other "ping" > /dev/null
+          JEAN_AGENT=ci-other node cli/jean.js inbox | grep -q ping
+          curl -fsS http://127.0.0.1:4299/v1/agents > /dev/null
+          curl -fsS http://127.0.0.1:4299/.well-known/agent-card.json > /dev/null
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Sec-Fetch-Site: cross-site' -H 'content-type: application/json' -d '{"title":"x"}' http://127.0.0.1:4299/api/tasks)
+          test "$code" = 403
+      - name: Python client compiles
+        run: python3 -m py_compile clients/jean_agent.py

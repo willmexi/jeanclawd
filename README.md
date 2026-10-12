@@ -109,7 +109,8 @@ docs/             PLUGINS.md, CLOUD.md
 
 ## Contributing
 
-Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first: no runtime
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first (and
+[SECURITY.md](SECURITY.md) to report a vulnerability privately): no runtime
 dependencies, tests for the data layer, and the house rules for the UI. Most new features fit in a
 plugin; if yours needs the core, open an issue to talk it through.
 
